@@ -9,6 +9,7 @@ import FormSample from './pages/FormSample';
 import ShowHidePassword from './pages/ShowHidePassword'
 import CharCounter from "./pages/CharCounter"
 import TicketPage from './pages/TicketPage';
+import NotePage from './pages/NotesPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Link to="/password">Password</Link>
         <Link to="/char-counter">CharCounter</Link>
         <Link to="/tickets">Ticket Management</Link>
+        <Link to="/notes">Note Manager</Link>
       </nav>
 
       <Routes>
@@ -36,6 +38,7 @@ function App() {
         <Route path="/form" element={<FormSample />} />
         <Route path="/char-counter" element={<CharCounter />} />
         <Route path="/tickets" element={<TicketPage />} />
+        <Route path="notes" element={<NotePage/>}/>
       </Routes>
     </BrowserRouter>
   );

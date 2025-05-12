@@ -36,6 +36,7 @@ function App() {
         <Route path="/list" element={<List />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/form" element={<FormSample />} />
+        <Route path="/password" element={<ShowHidePassword />} />
         <Route path="/char-counter" element={<CharCounter />} />
         <Route path="/tickets" element={<TicketPage />} />
         <Route path="notes" element={<NotePage/>}/>

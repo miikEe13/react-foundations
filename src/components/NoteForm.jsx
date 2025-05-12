@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const NoteForm = ({onAddNote}) => {
+const NoteForm = ({ onAddNote, noteToEdit, onUpdateNote, onClearNote }) => {
   const [note, setNote] = useState({ title: "", content: "", category: "" });
 
   const handleChange = (e) => {
@@ -11,15 +11,32 @@ const NoteForm = ({onAddNote}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (note.title === "" || note.content === "" || note.category === "") return;
-    const newNote = {...note};
-    onAddNote(newNote);
+    if (note.title === "" || note.content === "" || note.category === "")
+      return;
+
+    if(noteToEdit) {
+      onUpdateNote(note);
+      onClearNote()
+    } else {
+      const newNote = {
+        ...note,
+        id: Date.now(),
+      };
+      onAddNote(newNote);
+    }
     setNote({
       title: "",
       content: "",
       category: "",
     });
   };
+
+  useEffect(() => {
+    console.log(noteToEdit)
+    if (noteToEdit) {
+      setNote(noteToEdit);
+    }
+  }, [noteToEdit]);
 
   return (
     <>
@@ -69,7 +86,7 @@ const NoteForm = ({onAddNote}) => {
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
         >
-          Save Note
+          {noteToEdit ? "Update Note" : "Save Note"}
         </button>
       </form>
     </>

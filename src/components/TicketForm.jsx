@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-const TicketForm = ({ onAddTicket, ticketToEdit, onUpdateTicket, clearTicketToEdit }) => {
+const TicketForm = ({
+  onAddTicket,
+  ticketToEdit,
+  onUpdateTicket,
+  clearTicketToEdit,
+}) => {
   const [ticket, setTicket] = useState({ title: "", description: "" });
   const handleChange = (e) => {
     const { name, value } = e.target;

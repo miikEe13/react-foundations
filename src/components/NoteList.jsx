@@ -1,6 +1,6 @@
 import NoteItem from "./NoteItem";
 
-const NoteList = ({ notes }) => {
+const NoteList = ({ notes, onRemoveNote, onGetNoteToEdit }) => {
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-2xl font-semibold">Your Notes</h2>
@@ -12,7 +12,7 @@ const NoteList = ({ notes }) => {
             <p>No notes yet. Start by creating one!</p>
           </div>
         ) : (
-          notes.map((note, index) => <NoteItem key={index} note={note} />)
+          notes.map((note, index) => <NoteItem key={index} note={note} onRemoveNote={onRemoveNote} onGetNoteToEdit={onGetNoteToEdit}/>)
         )}
       </div>
     </div>

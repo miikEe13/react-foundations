@@ -4,11 +4,34 @@ import NoteList from "../components/NoteList";
 
 const NotesPage = () => {
   const [noteList, setNoteList] = useState([]);
+  const [noteToEdit, setNoteToEdit] = useState(null)
 
   const addNote = (note) => {
     if (!note) return;
     setNoteList([...noteList, note]);
   };
+
+  const removeNote = (id) => {
+    if(!id) return;
+    setNoteList(noteList.filter(note => note.id !== id))
+  }
+
+  const getNoteToEdit = (note) => {
+    console.log('note to edit', note)
+    setNoteToEdit(note)
+  }
+
+  const updateNote = (noteUpdated) => {
+    if(!noteUpdated) return;
+    setNoteList(
+      noteList.map((note => note.id === noteUpdated.id ? {...note, ...noteUpdated} : note))
+    )
+  }
+  
+  const clearNoteToEdit = () => {
+    setNoteToEdit(null);
+  };
+  
 
   return (
     <>
@@ -20,12 +43,12 @@ const NotesPage = () => {
         <div className="flex gap-8">
           {/* Left side: Form */}
           <div className="w-1/3">
-            <NoteForm onAddNote={addNote} />
+            <NoteForm onAddNote={addNote} noteToEdit={noteToEdit} onUpdateNote={updateNote} onClearNote={clearNoteToEdit}/>
           </div>
 
           {/* Right side: List */}
           <div className="w-2/3">
-            <NoteList notes={noteList}/>
+            <NoteList notes={noteList} onRemoveNote={removeNote} onGetNoteToEdit={getNoteToEdit} />
           </div>
         </div>
       </div>

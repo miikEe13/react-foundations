@@ -1,6 +1,6 @@
 import { useState } from "react";
-import NoteForm from "../components/NoteForm";
-import NoteList from "../components/NoteList";
+import NoteForm from "../../components/note/NoteForm";
+import NoteList from "../../components/note/NoteList";
 
 const NotesPage = () => {
   const [noteList, setNoteList] = useState([]);

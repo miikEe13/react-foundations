@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import TicketForm from "../components/TicketForm";
-import TicketList from "../components/TicketList";
+import TicketForm from "../../components/ticket/TicketForm";
+import TicketList from "../../components/ticket/TicketList";
 
 const TicketPage = () => {
   const [ticketList, setTicketList] = useState([]);

@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import MirrorInput from './pages/MirrorInput';
-import Counter from './pages/Counter';
-import Toggle from './pages/Toggle'
-import List from './pages/List';
-import Todo from './pages/Todo';
-import FormSample from './pages/FormSample';
-import ShowHidePassword from './pages/ShowHidePassword'
-import CharCounter from "./pages/CharCounter"
-import TicketPage from './pages/TicketPage';
-import NotePage from './pages/NotesPage';
+import Home from './pages/home/Home';
+import MirrorInput from './pages/basics/MirrorInput';
+import Counter from './pages/basics/Counter';
+import Toggle from './pages/basics/Toggle'
+import List from './pages/list/List';
+import Todo from './pages/forms/Todo';
+import FormSample from './pages/forms/FormSample';
+import ShowHidePassword from './pages/forms/ShowHidePassword'
+import CharCounter from "./pages/basics/CharCounter"
+import TicketPage from './pages/tickets/TicketPage';
+import NotePage from './pages/notes/NotesPage';
+import NotesPageWithStorage from './pages/notes/NotesPageWithStorage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Link to="/char-counter">CharCounter</Link>
         <Link to="/tickets">Ticket Management</Link>
         <Link to="/notes">Note Manager</Link>
+        <Link to="/notes-storage">Notes con Storage</Link>
       </nav>
 
       <Routes>
@@ -39,7 +41,8 @@ function App() {
         <Route path="/password" element={<ShowHidePassword />} />
         <Route path="/char-counter" element={<CharCounter />} />
         <Route path="/tickets" element={<TicketPage />} />
-        <Route path="notes" element={<NotePage/>}/>
+        <Route path="/notes" element={<NotePage/>}/>
+        <Route path="/notes-storage" element={<NotesPageWithStorage/>}/>
       </Routes>
     </BrowserRouter>
   );
